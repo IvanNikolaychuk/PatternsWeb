@@ -14,12 +14,12 @@ public class ClassContextConverter {
     private CodeElementInspection inspector;
 
     @Autowired
-    private StateManager stateManager;
+    private StateManagerFactory stateManagerFactory;
 
     public ClassContext<CodeElement> convert(ClassContext<String> classContext) {
+        StateManager stateManager = stateManagerFactory.createStateManager();
         CodeElement[] elements = new CodeElement[classContext.numberOfElements()];
 
-        stateManager.resetState();
         int index = 0;
         while (classContext.hasNext()) {
             final String word = classContext.next();

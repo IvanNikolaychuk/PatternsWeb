@@ -17,12 +17,6 @@ public class StateManager {
         return state.getState();
     }
 
-    // TODO: This is not normal. I want StateManager instance to be created on each call and to reset it's state in
-    // TODO: constructor, not manually.
-    public void resetState() {
-        state = new BeforeClassState();
-    }
-
     public interface State {
         // returns new state if state needs to be changed, current state if change shouldn't change
         State nextState(String newWord);
