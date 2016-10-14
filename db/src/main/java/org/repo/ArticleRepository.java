@@ -20,5 +20,5 @@ public class ArticleRepository  {
             session.save(article);
             transaction.commit();
         }
-    }
+        }
 }
