@@ -5,10 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-    <context:component-scan base-package="org.service"/>
+    <context:component-scan base-package="org.repo"/>
+    <bean id="sessionFactoryBuilder" class="org.repo.SessionFactoryBuilder"/>
 
-    <bean class="org.service.decoration.helpers.StateManagerFactory">
-        <lookup-method name="createStateManager"/>
+    <bean name="sessionFactory"
+          class="org.hibernate.SessionFactory"
+          factory-bean="sessionFactoryBuilder"
+          factory-method="newInstance"/>
+
+    <bean class="org.repo.ArticleRepository">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
-
 </beans>

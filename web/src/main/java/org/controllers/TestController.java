@@ -1,6 +1,6 @@
 package org.controllers;
 
-import org.model.Code;
+import org.service.ArticleService;
 import org.service.decoration.CodeToHtmlConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,14 +17,17 @@ public class TestController {
     @Autowired
     private CodeToHtmlConverter codeDecoratorService;
 
+    @Autowired
+    private ArticleService articleService;
 
     @RequestMapping("/hello")
     public ModelAndView getView() {
+        articleService.save();
         return new ModelAndView( "hello" );
     }
 
     @RequestMapping(value = "/testCodeService", method = POST, produces = MediaType.TEXT_PLAIN_VALUE)
     public void test(@RequestParam String code) {
-        codeDecoratorService.convert(new Code(code));
+        codeDecoratorService.convert(code);
     }
 }

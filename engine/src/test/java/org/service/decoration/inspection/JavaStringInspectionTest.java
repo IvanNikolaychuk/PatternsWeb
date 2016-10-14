@@ -3,7 +3,6 @@ package org.service.decoration.inspection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.service.decoration.elements.CodeElement;
-import org.service.decoration.elements.Comment;
 import org.service.decoration.elements.JavaString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +14,7 @@ import static org.service.decoration.helpers.ClassContextConverter.State.IN_CLAS
 import static org.service.decoration.helpers.ClassContextConverter.State.IN_COMMENT;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class JavaStringInspectionTest {
     @Autowired
     private JavaStringInspection inspection;

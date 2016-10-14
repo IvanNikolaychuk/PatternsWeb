@@ -1,6 +1,6 @@
 package org.service.decoration;
 
-import org.model.Code;
+import org.model.article.code.SingleClass;
 import org.service.decoration.annotations.HtmlElement;
 import org.service.decoration.context.ClassContext;
 import org.service.decoration.elements.CodeElement;
@@ -19,7 +19,7 @@ public class CodeToHtmlConverter {
     @Autowired
     private CodeSplitter codeSplitter;
 
-    public String convert(Code code) {
+    public SingleClass convert(String code) {
         ClassContext<CodeElement> classContext = converter.convert(new ClassContext<>(codeSplitter.split(code)));
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -28,7 +28,7 @@ public class CodeToHtmlConverter {
             stringBuilder.append(decorateElement(classContext.next()));
         }
 
-        return stringBuilder.toString();
+        return new SingleClass(stringBuilder.toString());
     }
 
     private String decorateElement(CodeElement element) {

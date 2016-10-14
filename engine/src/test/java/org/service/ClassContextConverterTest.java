@@ -2,7 +2,6 @@ package org.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.model.Code;
 import org.service.decoration.context.ClassContext;
 import org.service.decoration.helpers.ClassContextConverter;
 import org.service.decoration.helpers.CodeSplitter;
@@ -14,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class ClassContextConverterTest {
 
     @Autowired
@@ -30,7 +29,7 @@ public class ClassContextConverterTest {
                                  "// hello\n" +
                                  "private int a;" +
                             "}";
-        String[] splitted = codeSplitter.split(new Code(code));
+        String[] splitted = codeSplitter.split(code);
 
         ClassContext<CodeElement> classContext = classContextConverter.convert(new ClassContext<>(splitted));
 

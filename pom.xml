@@ -12,12 +12,14 @@
 
     <properties>
         <spring.version>4.3.3.RELEASE</spring.version>
+        <hibernate.version>5.2.3.Final</hibernate.version>
     </properties>
 
     <modules>
         <module>web</module>
         <module>core</module>
         <module>engine</module>
+        <module>db</module>
     </modules>
 
     <dependencies>

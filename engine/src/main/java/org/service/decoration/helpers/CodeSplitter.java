@@ -1,6 +1,5 @@
 package org.service.decoration.helpers;
 
-import org.model.Code;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -14,21 +13,19 @@ public class CodeSplitter {
     private static final Pattern pattern = Pattern.compile("=|\\.|;|,|\\s+|\\n|\\(|\\)|<|>");
 
 
-    public String[] split(Code code) {
-        final String text = code.getCode();
-
+    public String[] split(String code) {
         int lastMatch = 0;
         LinkedList<String> splitted = new LinkedList<>();
 
-        Matcher m = pattern.matcher(text);
+        Matcher m = pattern.matcher(code);
 
         while (m.find()) {
-            addIfNotEmpty(splitted, text.substring(lastMatch, m.start()));
+            addIfNotEmpty(splitted, code.substring(lastMatch, m.start()));
             addIfNotEmpty(splitted, m.group());
             lastMatch = m.end();
         }
 
-        final String endString = text.substring(lastMatch);
+        final String endString = code.substring(lastMatch);
         if (!endString.isEmpty()) {
             splitted.add(trim(endString));
         }

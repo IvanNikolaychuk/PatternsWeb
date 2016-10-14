@@ -13,7 +13,7 @@ import static org.service.decoration.helpers.ClassContextConverter.State.IN_CLAS
 import static org.service.decoration.helpers.ClassContextConverter.State.IN_COMMENT;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class AnnotationInspectionTest {
     @Autowired
     private AnnotationInspection inspection;

@@ -15,7 +15,7 @@ import static org.service.decoration.helpers.ClassContextConverter.State.IN_CLAS
 import static org.service.decoration.inspection.InspectionHelper.classContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class RightAngleBracketInspectionTest {
     @Autowired
     private RightAngleBracketInspection inspection;

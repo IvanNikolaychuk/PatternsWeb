@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.service.decoration.helpers.ClassContextConverter.State.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class KeyWordInspectionTest {
     @Autowired
     private KeyWordInspector inspection;

@@ -1,7 +1,7 @@
 package org.service.decoration.context;
 
 /**
- * Represents the whole content of the class with convenient navigation via classes elements.
+ * Represents the whole content of the class with convenient navigation via article elements.
  */
 public class ClassContext<T> {
 //    private final T noElement;

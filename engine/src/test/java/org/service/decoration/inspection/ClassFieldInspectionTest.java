@@ -15,7 +15,7 @@ import static org.service.decoration.helpers.ClassContextConverter.State.IN_COMM
 import static org.service.decoration.elements.CodeElement.NO_ELEMENT;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-context.xml")
+@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class ClassFieldInspectionTest {
         @Autowired
         private ClassFieldInspection inspection;
