@@ -14,6 +14,7 @@
 
         <!-- List of XML mapping files -->
         <mapping class="org.model.article.Article"/>
+        <mapping class="org.model.article.Tag"/>
         <mapping class="org.model.article.code.ArticleCode"/>
         <mapping class="org.model.Comment"/>
         <mapping class="org.model.article.code.SingleClass"/>

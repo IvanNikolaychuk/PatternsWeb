@@ -39,6 +39,7 @@ public class ArticleRepository {
         return session
                 .createCriteria(Article.class)
                 .setFetchMode("comments", fetchMode)
+                .setFetchMode("tags", fetchMode)
                 .setFetchMode("articleCode.classes", fetchMode)
                 .setFetchMode("articleCode.sections", fetchMode)
                 .setResultTransformer(DISTINCT_ROOT_ENTITY);

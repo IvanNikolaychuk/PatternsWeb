@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.model.Comment;
 import org.model.article.code.ArticleCode;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,13 +26,17 @@ public class Article {
     @OneToOne(cascade = ALL)
     private ArticleCode articleCode;
 
+    @ManyToMany(cascade = ALL)
+    private Set<Tag> tags;
+
     // for hibernate use only
     public Article() {}
 
-    public Article(String name, String preview, ArticleCode articleCode) {
+    public Article(String name, String preview, ArticleCode articleCode, Set<Tag> tags) {
         this.name = name;
         this.preview = preview;
         this.articleCode = articleCode;
+        this.tags = tags;
         creationDate = LocalDate.now();
         comments = new HashSet<>();
     }

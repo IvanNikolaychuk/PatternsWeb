@@ -3,6 +3,7 @@ package org.service;
 import org.exceptions.NoSuchArticleException;
 import org.model.Comment;
 import org.model.article.Article;
+import org.model.article.Tag;
 import org.model.article.code.ArticleCode;
 import org.model.article.code.ClassSection;
 import org.model.article.code.SingleClass;
@@ -35,7 +36,7 @@ public class ArticleService {
                 new SingleClass("singletonClass2"), new SingleClass("singletonClass3")));
         classSections.add(new ClassSection(new SingleClass("singletonClass4"), new SingleClass("singletonClass5")));
         ArticleCode articleCode = new ArticleCode(Collections.singleton(singleClass1), classSections);
-        Article article = new Article("name", "preview", articleCode);
+        Article article = new Article("name", "preview", articleCode, Collections.singleton(new Tag("GoF")));
         article.addComment(new Comment("Ivan", "text"));
 
         repository.save(article);
