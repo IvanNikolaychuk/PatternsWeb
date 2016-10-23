@@ -21,4 +21,23 @@ public class SingleClass {
     public String getCode() {
         return code;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SingleClass that = (SingleClass) o;
+
+        if (id != that.id) return false;
+        return code != null ? code.equals(that.code) : that.code == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (code != null ? code.hashCode() : 0);
+        return result;
+    }
 }

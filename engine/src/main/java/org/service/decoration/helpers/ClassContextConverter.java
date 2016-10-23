@@ -9,12 +9,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClassContextConverter {
-    @Autowired
-    @Qualifier("compositeInspector")
-    private CodeElementInspection inspector;
+    private final CodeElementInspection inspector;
+
+    private final StateManagerFactory stateManagerFactory;
 
     @Autowired
-    private StateManagerFactory stateManagerFactory;
+    public ClassContextConverter(StateManagerFactory stateManagerFactory,
+                                 @Qualifier("compositeInspector") CodeElementInspection inspector) {
+        this.stateManagerFactory = stateManagerFactory;
+        this.inspector = inspector;
+    }
 
     public ClassContext<CodeElement> convert(ClassContext<String> classContext) {
         StateManager stateManager = stateManagerFactory.createStateManager();

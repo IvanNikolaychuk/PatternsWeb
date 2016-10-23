@@ -2,7 +2,9 @@ package org.model.article.code;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.Arrays.asList;
 import static javax.persistence.CascadeType.ALL;
@@ -17,15 +19,34 @@ public class ClassSection {
     @GeneratedValue
     private int id;
 
-    @OneToMany(cascade = ALL)
-    private final List<SingleClass> singleClasses;
+    @OneToMany(cascade = ALL, fetch = FetchType.EAGER)
+    private final Set<SingleClass> singleClasses;
 
     public ClassSection() {
-        this.singleClasses = new ArrayList<>();
+        this.singleClasses = new HashSet<>();
     }
 
     public ClassSection(SingleClass... singleClasses) {
-        this.singleClasses = new ArrayList<>();
+        this();
         this.singleClasses.addAll(asList(singleClasses));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ClassSection that = (ClassSection) o;
+
+        if (id != that.id) return false;
+        return singleClasses != null ? singleClasses.equals(that.singleClasses) : that.singleClasses == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (singleClasses != null ? singleClasses.hashCode() : 0);
+        return result;
     }
 }

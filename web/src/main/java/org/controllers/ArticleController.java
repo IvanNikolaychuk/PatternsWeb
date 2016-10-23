@@ -1,31 +1,29 @@
 package org.controllers;
 
-import org.model.article.code.SingleClass;
+import org.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ArticleController {
+    private ArticleService articleService;
 
-    @RequestMapping("/articles")
-    public ModelAndView getA() {
-
-        return new ModelAndView( "hello" );
+    @Autowired
+    public ArticleController(ArticleService articleService) {
+        this.articleService = articleService;
     }
 
-    @RequestMapping("/data")
-    @ResponseBody
-    public String get() {
-        return "data";
+    @RequestMapping("/article/save")
+    public void save() {
+        articleService.save();
     }
 
-    @RequestMapping("test")
-    public ModelAndView get2(@ModelAttribute("code") SingleClass singleClass) {
-
-        return new ModelAndView( "hello" );
+    @RequestMapping("/articles/new")
+    public ModelAndView getArticleCreationForm() {
+        return new ModelAndView("article-creation");
     }
+
 
 }

@@ -13,11 +13,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class CodeToHtmlConverter {
 
-    @Autowired
-    private ClassContextConverter converter;
+    private final ClassContextConverter converter;
+
+    private final CodeSplitter codeSplitter;
 
     @Autowired
-    private CodeSplitter codeSplitter;
+    public CodeToHtmlConverter(ClassContextConverter converter, CodeSplitter codeSplitter) {
+        this.converter = converter;
+        this.codeSplitter = codeSplitter;
+    }
 
     public SingleClass convert(String code) {
         ClassContext<CodeElement> classContext = converter.convert(new ClassContext<>(codeSplitter.split(code)));
@@ -32,17 +36,17 @@ public class CodeToHtmlConverter {
     }
 
     private String decorateElement(CodeElement element) {
-        if (element.getClass().isAnnotationPresent(HtmlElement.class)) {
-            HtmlElement htmlElementAnnotation = element.getClass().getAnnotation(HtmlElement.class);
-
-            final String htmlClassName = htmlElementAnnotation.className();
-            final String displayValue = htmlElementAnnotation.displayValue();
-            final String htmlDisplayValue = displayValue.isEmpty() ? element.getValue() : displayValue;
-
-            return "<div class='" + htmlClassName + " code-element" + "'>" + htmlDisplayValue + "</div>";
+        if (!element.getClass().isAnnotationPresent(HtmlElement.class)) {
+            return element.getValue();
         }
 
-        return element.getValue();
+        HtmlElement htmlElementAnnotation = element.getClass().getAnnotation(HtmlElement.class);
+
+        final String htmlClassName = htmlElementAnnotation.className();
+        final String displayValue = htmlElementAnnotation.displayValue();
+        final String htmlDisplayValue = displayValue.isEmpty() ? element.getValue() : displayValue;
+
+        return "<div class='" + htmlClassName + " code-element" + "'>" + htmlDisplayValue + "</div>";
     }
 
 }
