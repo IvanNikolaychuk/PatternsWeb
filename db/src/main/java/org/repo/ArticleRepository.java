@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static org.hibernate.FetchMode.JOIN;
 import static org.hibernate.criterion.CriteriaSpecification.DISTINCT_ROOT_ENTITY;
 
 public class ArticleRepository {
@@ -38,8 +39,8 @@ public class ArticleRepository {
     private Criteria buildCriteria(Session session, FetchMode fetchMode) {
         return session
                 .createCriteria(Article.class)
+                .setFetchMode("tags", JOIN)
                 .setFetchMode("comments", fetchMode)
-                .setFetchMode("tags", fetchMode)
                 .setFetchMode("articleCode.classes", fetchMode)
                 .setFetchMode("articleCode.sections", fetchMode)
                 .setResultTransformer(DISTINCT_ROOT_ENTITY);
