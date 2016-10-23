@@ -2,13 +2,11 @@ package org.repo;
 
 import org.hibernate.*;
 import org.model.article.Article;
-import org.model.article.code.ArticleCode;
 import org.repo.specification.ArticleSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static org.hibernate.FetchMode.EAGER;
 import static org.hibernate.criterion.CriteriaSpecification.DISTINCT_ROOT_ENTITY;
 
 public class ArticleRepository {

@@ -1,8 +1,6 @@
 package org.service;
 
 import org.exceptions.NoSuchArticleException;
-import org.hibernate.FetchMode;
-import org.hibernate.cfg.Configuration;
 import org.model.Comment;
 import org.model.article.Article;
 import org.model.article.code.ArticleCode;
@@ -13,9 +11,11 @@ import org.repo.specification.ByArticleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
-import static java.util.Collections.singletonList;
 import static org.hibernate.FetchMode.JOIN;
 import static org.hibernate.FetchMode.SELECT;
 
