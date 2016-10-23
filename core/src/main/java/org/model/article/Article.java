@@ -1,18 +1,22 @@
 package org.model.article;
 
-import org.model.article.code.ArticleCode;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import org.model.Comment;
+import org.model.article.code.ArticleCode;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.*;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class Article {
     @Id
     private String name;
@@ -34,46 +38,6 @@ public class Article {
         this.articleCode = articleCode;
         creationDate = LocalDate.now();
         comments = new HashSet<>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(LocalDate creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getPreview() {
-        return preview;
-    }
-
-    public void setPreview(String preview) {
-        this.preview = preview;
-    }
-
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public ArticleCode getArticleCode() {
-        return articleCode;
-    }
-
-    public void setArticleCode(ArticleCode articleCode) {
-        this.articleCode = articleCode;
     }
 
     public void addComment(Comment comment) {

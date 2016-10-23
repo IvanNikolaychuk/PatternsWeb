@@ -42,8 +42,8 @@ public class ArticleService {
     }
 
 
-    private Article get(String articleName, boolean completely) throws NoSuchArticleException {
-        List<Article> articles = repository.get(new ByArticleName(articleName), completely ? JOIN : SELECT);
+    private Article get(String articleName, boolean thin) throws NoSuchArticleException {
+        List<Article> articles = repository.get(new ByArticleName(articleName), thin ? SELECT : JOIN);
 
         if (articles.isEmpty()) {
             throw new NoSuchArticleException(articleName);
@@ -54,10 +54,10 @@ public class ArticleService {
 
 
     public Article get(String articleName) throws NoSuchArticleException {
-        return get(articleName, false);
+        return get(articleName, true);
     }
 
     public Article load(String articleName) throws NoSuchArticleException {
-        return get(articleName, true);
+        return get(articleName, false);
     }
 }

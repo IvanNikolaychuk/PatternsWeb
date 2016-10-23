@@ -1,11 +1,15 @@
 package org.model.article.code;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 import static java.util.Arrays.asList;
 import static javax.persistence.CascadeType.ALL;
 
@@ -14,6 +18,7 @@ import static javax.persistence.CascadeType.ALL;
  * On UI this is a monolith block where {@link SingleClass} act as tabs.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class ClassSection {
     @Id
     @GeneratedValue

@@ -1,9 +1,13 @@
 package org.model.article.code;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
 import javax.persistence.*;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
+import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -11,6 +15,7 @@ import static javax.persistence.CascadeType.ALL;
  * Usually article has both {@link SingleClass}'s and {@link ClassSection}'s in.
  */
 @Entity
+@JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
 public class ArticleCode {
     @Id
     @GeneratedValue
