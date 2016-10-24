@@ -22,7 +22,7 @@ public class ClassSection {
     @GeneratedValue
     private int id;
 
-    @OneToMany(cascade = ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = ALL)
     private final Set<SingleClass> singleClasses;
 
     public ClassSection() {
@@ -52,4 +52,5 @@ public class ClassSection {
         result = 31 * result + (singleClasses != null ? singleClasses.hashCode() : 0);
         return result;
     }
+
 }

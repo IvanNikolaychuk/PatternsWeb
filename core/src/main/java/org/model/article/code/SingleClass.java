@@ -8,7 +8,6 @@ public class SingleClass {
     @GeneratedValue
     private int id;
 
-    @Access(AccessType.FIELD)
     private String code;
 
     public SingleClass() {
@@ -16,10 +15,6 @@ public class SingleClass {
 
     public SingleClass(String code) {
         this.code = code;
-    }
-
-    public String getCode() {
-        return code;
     }
 
     @Override
