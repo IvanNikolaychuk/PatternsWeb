@@ -16,7 +16,11 @@ body {
     border-radius: 6px;
     background: #E3EEFA;
     display: inline-block;
-    font-family: 'Merriweather', serif;
+    font-size:1.2em;
+}
+
+.title {
+    font-family: 'EB Garamond', serif;
 }
 
 .tag:hover{
@@ -24,12 +28,13 @@ body {
 }
 
 #main-frame {
-    margin: -1% 20% 0;
+    margin: -1% 10% 0;
     background: #fff;
 }
 
 .article-name {
-    font-size: 1.4em;
+    margin-bottom: 1%;
+    font-size: 1.3em;
     font-family: 'Merriweather', serif;
 }
 
@@ -53,8 +58,8 @@ body {
 
 
 .time{
+    font-size:1.3em;
     margin-bottom: 1.5%;
-    font-family: 'Merriweather', serif;
     color:#C7CFD9;
 }
 
