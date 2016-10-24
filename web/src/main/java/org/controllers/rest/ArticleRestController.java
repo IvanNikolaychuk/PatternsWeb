@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/rest/")
 public class ArticleRestController {
@@ -26,5 +28,10 @@ public class ArticleRestController {
         return thin.equals("true") ?
                         articleService.get(articleName) :
                         articleService.load(articleName);
+    }
+
+    @RequestMapping("/articles")
+    public List<Article> get() {
+        return articleService.getAll();
     }
 }

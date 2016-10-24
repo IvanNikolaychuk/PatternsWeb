@@ -12,10 +12,7 @@ import org.repo.specification.ByArticleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.hibernate.FetchMode.JOIN;
 import static org.hibernate.FetchMode.SELECT;
@@ -36,7 +33,8 @@ public class ArticleService {
                 new SingleClass("singletonClass2"), new SingleClass("singletonClass3")));
         classSections.add(new ClassSection(new SingleClass("singletonClass4"), new SingleClass("singletonClass5")));
         ArticleCode articleCode = new ArticleCode(Collections.singleton(singleClass1), classSections);
-        Article article = new Article("name", "preview", articleCode, Collections.singleton(new Tag("GoF")));
+        Article article = new Article("name" + new Random().nextInt(),
+                "preview", articleCode, Collections.singleton(new Tag("GoF")));
         article.addComment(new Comment("Ivan", "text"));
 
         repository.save(article);
@@ -53,6 +51,13 @@ public class ArticleService {
         return articles.get(0);
     }
 
+    private List<Article> getAll(boolean thin) {
+        return repository.getAll( thin ? SELECT : JOIN);
+    }
+
+    public List<Article> getAll() {
+        return getAll(true);
+    }
 
     public Article get(String articleName) throws NoSuchArticleException {
         return get(articleName, true);

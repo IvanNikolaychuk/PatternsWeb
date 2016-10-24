@@ -36,6 +36,14 @@ public class ArticleRepository {
         }
     }
 
+    @SuppressWarnings("all")
+    public List<Article> getAll(FetchMode fetchMode) {
+        try(Session session = sessionFactory.openSession()) {
+
+            return buildCriteria(session, fetchMode).list();
+        }
+    }
+
     private Criteria buildCriteria(Session session, FetchMode fetchMode) {
         return session
                 .createCriteria(Article.class)
