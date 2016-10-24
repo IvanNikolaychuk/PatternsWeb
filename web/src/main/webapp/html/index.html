@@ -40,7 +40,7 @@
                 <div class="tags" ng-repeat="tag in article.tags">
                     <div class="tag">{{ tag.name }}</div>
                 </div>
-                <div class="time">{{ article.creationDate.dayOfMonth }}</div>
+                <div class="time">{{ articleService.format(article.creationDate) }}</div>
 
             </div>
             <div class="topic-content">{{ article.preview }}</div>

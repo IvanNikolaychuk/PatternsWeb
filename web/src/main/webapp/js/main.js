@@ -1,8 +1,18 @@
-var app = angular.module("app", []);
+var app = angular.module("app", [])
+    .service('articleService', function () {
+        return {
+            format: function (date) {
+                return date.dayOfMonth + '.' + date.monthValue + '.' + date.year;
+            }
+        };
+    })
+    .controller('mainController', ['$scope', '$http', 'articleService', function ($scope, $http, articleService) {
+        $scope.articleService = articleService;
 
-app.controller('mainController', ['$scope','$http', function($scope,$http) {
-    $http.get("rest/articles")
-    .then(function(response) {
-        $scope.articles = response.data;
-    });
-}]);
+        $http.get("rest/articles")
+            .then(function (response) {
+                $scope.articles = response.data;
+            });
+
+    }]);
+
