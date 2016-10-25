@@ -6,35 +6,21 @@
     <title>Your Website</title>
     <link href="css/main.css" rel="stylesheet"/>
     <link href="css/commons.css" rel="stylesheet"/>
-    <link href="css/header.css" rel="stylesheet"/>
 
     <script src="js/angular.min.js"></script>
     <script src="js/main.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
-
-
 </head>
 
 <body ng-app="app" ng-controller="mainController">
 <div id="main-frame">
-    <header>
-        <div id="logo">
-            <div class="design-text">Design</div>
-            <div class="patterns-text">Patterns</div>
-        </div>
-        <ul>
-            <li><a>Статьи</a></li>
-            <li><a>Услуги</a></li>
-            <li><a>Обо мне</a></li>
-        </ul>
-    </header>
+    <div ng-include src="'html/header.html'"></div>
     <div>
         <div class="tag-filter" ng-hide="filterTag == null">
-            Показаны только статьи, имеющие тэг
-            <div class="tag small-tag"> {{ filterTag }}</div>
+            Показаны только статьи, имеющие тэг <div class="tag small-tag"> {{ filterTag }}</div>
         </div>
     </div>
     <div class="topic-wrapper" ng-repeat="article in articles">
