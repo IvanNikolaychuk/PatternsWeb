@@ -2,13 +2,15 @@ package org.model.article.code;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.ANY;
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.NONE;
-import static java.util.Arrays.asList;
 import static javax.persistence.CascadeType.ALL;
 
 /**
@@ -29,9 +31,8 @@ public class ClassSection {
         this.singleClasses = new HashSet<>();
     }
 
-    public ClassSection(SingleClass... singleClasses) {
-        this();
-        this.singleClasses.addAll(asList(singleClasses));
+    public ClassSection(Set<SingleClass> singleClasses) {
+        this.singleClasses = singleClasses;
     }
 
     @Override

@@ -29,30 +29,9 @@ public class ArticleService {
         this.repository = repository;
     }
 
-    public void save() {
-        SingleClass singleClass1 = new SingleClass("singletonClass1");
-        Set<ClassSection> classSections = new HashSet<>();
-        classSections.add(new ClassSection(singleClass1,
-                new SingleClass("singletonClass2"), new SingleClass("singletonClass3")));
-        classSections.add(new ClassSection(new SingleClass("singletonClass4"), new SingleClass("singletonClass5")));
-        ArticleCode articleCode = new ArticleCode(Collections.singleton(singleClass1), classSections);
-        Article article = new Article("name" + new Random().nextInt(),
-                "preview", articleCode, Collections.singleton(generateTag()));
-        article.addComment(new Comment("Ivan", "text"));
 
+    public void save(Article article) {
         repository.save(article);
-    }
-
-    private Tag generateTag() {
-        List<Tag> tags = new ArrayList<>(3);
-        tags.add(new Tag("GoF"));
-        tags.add(new Tag("Creation"));
-        tags.add(new Tag("Behavior"));
-
-        Random random = new Random();
-
-
-        return tags.get(random.nextInt(tags.size()));
     }
 
     public List<Article> getByTag(String tagName) {
@@ -85,4 +64,5 @@ public class ArticleService {
     public Article load(String articleName) throws NoSuchArticleException {
         return get(articleName, false);
     }
+
 }

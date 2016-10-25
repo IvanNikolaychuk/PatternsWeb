@@ -23,7 +23,7 @@ public class CodeToHtmlConverter {
         this.codeSplitter = codeSplitter;
     }
 
-    public SingleClass convert(String code) {
+    public SingleClass convert(String className, String code) {
         ClassContext<CodeElement> classContext = converter.convert(new ClassContext<>(codeSplitter.split(code)));
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -32,7 +32,7 @@ public class CodeToHtmlConverter {
             stringBuilder.append(decorateElement(classContext.next()));
         }
 
-        return new SingleClass(stringBuilder.toString());
+        return new SingleClass(className, stringBuilder.toString());
     }
 
     private String decorateElement(CodeElement element) {

@@ -8,12 +8,16 @@ public class SingleClass {
     @GeneratedValue
     private int id;
 
+    private String name;
+
+    @Column(columnDefinition="text")
     private String code;
 
     public SingleClass() {
     }
 
-    public SingleClass(String code) {
+    public SingleClass(String name, String code) {
+        this.name = name;
         this.code = code;
     }
 
