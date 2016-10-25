@@ -43,7 +43,7 @@
 
                 <div class="article-name">{{ article.name }}</div>
                 <div class="tags" ng-repeat="tag in article.tags">
-                    <div class="tag">{{ tag.name }}</div>
+                    <div class="tag" ng-click="tagService.clicked(tag.name)">{{ tag.name }}</div>
                 </div>
                 <div class="time">{{ articleService.format(article.creationDate) }}</div>
 

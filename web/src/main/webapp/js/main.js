@@ -9,8 +9,17 @@
                 }
             };
         })
-        .controller('mainController', ['$scope', '$http', 'articleService', function ($scope, $http, articleService) {
+        .service('tagService', function () {
+            return {
+                clicked: function (tagName) {
+                    window.location = window.location.origin + "?tag=" + tagName;
+                }
+            }
+        })
+        .controller('mainController', ['$scope', '$http', 'articleService', 'tagService',
+            function ($scope, $http, articleService, tagService) {
             $scope.articleService = articleService;
+            $scope.tagService = tagService;
 
 
             var desiredTag = getParameterByName('tag');
