@@ -1,23 +1,6 @@
-(function() {
-    $(".nav-articles").addClass("active-nav");
-
-    var app = angular.module("app", [])
-        .service('articleService', function () {
-            return {
-                format: function (date) {
-                    return date.dayOfMonth + '.' + date.monthValue + '.' + date.year;
-                }
-            };
-        })
-        .service('tagService', function () {
-            return {
-                clicked: function (tagName) {
-                    window.location = window.location.origin + "?tag=" + tagName;
-                }
-            }
-        })
-        .controller('mainController', ['$scope', '$http', 'articleService', 'tagService',
-            function ($scope, $http, articleService, tagService) {
+angular.module("app")
+    .controller('mainController', ['$scope', '$http', 'articleService', 'tagService',
+        function ($scope, $http, articleService, tagService) {
             $scope.articleService = articleService;
             $scope.tagService = tagService;
 
@@ -40,5 +23,4 @@
                 if (!results[2]) return '';
                 return decodeURIComponent(results[2].replace(/\+/g, " "));
             }
-        }])
-})();
+        }]);
