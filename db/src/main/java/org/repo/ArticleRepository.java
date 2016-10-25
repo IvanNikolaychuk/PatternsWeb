@@ -30,27 +30,10 @@ public class ArticleRepository {
     public List<Article> get(ArticleSpecification specification, FetchMode fetchMode) {
         try(Session session = sessionFactory.openSession()) {
 
-            return buildCriteria(session, fetchMode)
-                    .add(specification.toCriteria())
+            return specification
+                    .fetchMode(fetchMode)
+                    .toCriteria(session)
                     .list();
         }
-    }
-
-    @SuppressWarnings("all")
-    public List<Article> getAll(FetchMode fetchMode) {
-        try(Session session = sessionFactory.openSession()) {
-
-            return buildCriteria(session, fetchMode).list();
-        }
-    }
-
-    private Criteria buildCriteria(Session session, FetchMode fetchMode) {
-        return session
-                .createCriteria(Article.class)
-                .setFetchMode("tags", JOIN)
-                .setFetchMode("comments", fetchMode)
-                .setFetchMode("articleCode.classes", fetchMode)
-                .setFetchMode("articleCode.sections", fetchMode)
-                .setResultTransformer(DISTINCT_ROOT_ENTITY);
     }
 }

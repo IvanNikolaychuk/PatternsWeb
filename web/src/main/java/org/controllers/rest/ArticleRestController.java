@@ -31,7 +31,10 @@ public class ArticleRestController {
     }
 
     @RequestMapping("/articles")
-    public List<Article> get() {
-        return articleService.getAll();
+    public List<Article> get(@RequestParam(value = "tag", defaultValue = "")
+                                         String tag) {
+        return tag.isEmpty() ?
+                articleService.getAll() :
+                articleService.getByTag(tag);
     }
 }

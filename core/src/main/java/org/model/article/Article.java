@@ -11,6 +11,7 @@ import java.util.Set;
 
 import static com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility.*;
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.EAGER;
 
 @Entity
 @JsonAutoDetect(fieldVisibility = ANY, getterVisibility = NONE, setterVisibility = NONE)
@@ -26,7 +27,7 @@ public class Article {
     @OneToOne(cascade = ALL)
     private ArticleCode articleCode;
 
-    @ManyToMany(cascade = ALL)
+    @ManyToMany(cascade = ALL, fetch = EAGER)
     private Set<Tag> tags;
 
     // for hibernate use only

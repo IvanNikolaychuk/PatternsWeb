@@ -4,6 +4,20 @@ body {
     font-size: 0.9em;
 }
 
+
+.tag-filter {
+    margin-top:2%;
+    padding-bottom: 1%;
+    text-align: center;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.small-tag {
+    font-size:1em !important;
+    padding: 0.3% 0.8%;
+    margin-left: 0.3%;
+}
+
 .tag {
     cursor: pointer;
     margin-bottom:0.5%;

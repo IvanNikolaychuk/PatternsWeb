@@ -1,6 +1,7 @@
 package org.service;
 
 import org.exceptions.NoSuchArticleException;
+import org.hibernate.cfg.Configuration;
 import org.model.Comment;
 import org.model.article.Article;
 import org.model.article.Tag;
@@ -9,6 +10,8 @@ import org.model.article.code.ClassSection;
 import org.model.article.code.SingleClass;
 import org.repo.ArticleRepository;
 import org.repo.specification.ByArticleName;
+import org.repo.specification.ByTag;
+import org.repo.specification.EachArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,10 +37,26 @@ public class ArticleService {
         classSections.add(new ClassSection(new SingleClass("singletonClass4"), new SingleClass("singletonClass5")));
         ArticleCode articleCode = new ArticleCode(Collections.singleton(singleClass1), classSections);
         Article article = new Article("name" + new Random().nextInt(),
-                "preview", articleCode, Collections.singleton(new Tag("GoF")));
+                "preview", articleCode, Collections.singleton(generateTag()));
         article.addComment(new Comment("Ivan", "text"));
 
         repository.save(article);
+    }
+
+    private Tag generateTag() {
+        List<Tag> tags = new ArrayList<>(3);
+        tags.add(new Tag("GoF"));
+        tags.add(new Tag("Creation"));
+        tags.add(new Tag("Behavior"));
+
+        Random random = new Random();
+
+
+        return tags.get(random.nextInt(tags.size()));
+    }
+
+    public List<Article> getByTag(String tagName) {
+        return repository.get(new ByTag(tagName), SELECT);
     }
 
 
@@ -52,7 +71,7 @@ public class ArticleService {
     }
 
     private List<Article> getAll(boolean thin) {
-        return repository.getAll( thin ? SELECT : JOIN);
+        return repository.get( new EachArticle(), thin ? SELECT : JOIN);
     }
 
     public List<Article> getAll() {
