@@ -19,11 +19,15 @@ header ul li {
 }
 
 ul li a {
-    margin-left: 20px;
+    padding-left: 25px;
     font-size: 1.3em;
 }
 
 header ul li:hover {
+    color:#86B1E3;
+}
+
+header ul li .active-nav {
     color:#86B1E3;
 }
 

@@ -6,6 +6,7 @@
     <title>Your Website</title>
     <link href="css/main.css" rel="stylesheet"/>
     <link href="css/commons.css" rel="stylesheet"/>
+    <link href="css/header.css" rel="stylesheet"/>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Merriweather:400|EB+Garamond" rel="stylesheet">
 
@@ -20,7 +21,17 @@
 
 <body ng-app="app" ng-controller="mainController" ng-cloak>
 <div id="main-frame">
-    <div ng-include src="'html/header.html'"></div>
+    <header>
+        <div id="logo">
+            <div class="design-text">Design</div>
+            <div class="patterns-text">Patterns</div>
+        </div>
+        <ul>
+            <li><a class="nav nav-articles active-nav">Статьи</a></li>
+            <li><a class="nav nav-service">Услуги</a></li>
+            <li><a class="nav nav-about-me">Обо мне</a></li>
+        </ul>
+    </header>
     <div>
         <div class="tag-filter" ng-hide="filterTag == null">
             Показаны только статьи, имеющие тэг <div class="tag small-tag"> {{ filterTag }}</div>

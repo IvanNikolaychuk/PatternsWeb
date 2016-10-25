@@ -1,4 +1,6 @@
 (function() {
+    $(".nav-articles").addClass("active-nav");
+
     var app = angular.module("app", [])
         .service('articleService', function () {
             return {
