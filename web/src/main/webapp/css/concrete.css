@@ -22,11 +22,15 @@ body {
 }
 
 .article-name {
-    margin-bottom: 1%;
-    font-size: 1.3em;
+    margin-bottom: 1.5%;
+    font-size: 1.4em;
     font-family: 'Merriweather', serif;
 }
 
+
+#wrapper {
+    padding: 6%;
+}
 
 /**
  Topics

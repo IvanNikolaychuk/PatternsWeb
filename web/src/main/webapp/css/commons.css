@@ -1,0 +1,25 @@
+.tag {
+    font-family: 'EB Garamond', serif;
+    cursor: pointer;
+    margin-bottom:0.5%;
+    margin-right: 0.7%;
+    color: #545454;
+    width: auto;
+    padding: 0.3% 1%;
+    text-align: center;
+    border-radius: 6px;
+    background: #E3EEFA;
+    display: inline-block;
+    font-size:1.2em;
+}
+
+
+.small-tag {
+    font-size:1em !important;
+    padding: 0.3% 0.8%;
+    margin-left: 0.3%;
+}
+
+.tag:hover{
+    background: #DCEBFC;
+}

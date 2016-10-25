@@ -1,0 +1,64 @@
+#code-editor{
+    height: 500px;
+    background-color: #f8f8f8;
+}
+
+
+#code-editor ul{
+    list-style-type: none;
+    background: #F0F1F2;
+    padding-left: 0%;
+    border-bottom: 2px solid #fff;
+    margin: 0;
+}
+
+#code-editor .active{
+    background: #DADDE3;
+}
+
+#code-editor .active:before{
+    content: '\25CF';
+    color: #799EC7;
+    margin-right: 0.1em;
+}
+
+#code-editor li{
+    padding: 1%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.code {
+    padding-top:1%;
+}
+
+.class{
+    height: 100%;
+    overflow-y:scroll;
+    background-color: #f8f8f8;
+}
+
+
+.code-key-word{
+    display: inline-block;
+    color: #000080;
+    font-weight: bold;
+}
+
+.code-class-field{
+    display: inline-block;
+    color:#660E7A;
+    font-weight: bold;
+}
+
+.code-comment{
+    display: inline-block;
+    color:#808080;
+}
+
+.code-punctuation-sign{
+    display: inline-block;
+    font-size: 1.2em;
+}

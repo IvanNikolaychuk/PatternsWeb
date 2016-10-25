@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Your Website</title>
+    <link href="css/concrete.css" rel="stylesheet"/>
+    <link href="css/commons.css" rel="stylesheet"/>
+    <link href="css/code.css" rel="stylesheet"/>
+    <link href="css/header.css" rel="stylesheet"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="main-frame">
+    <header>
+        <div id="logo">
+            <div class="design-text">Design</div>
+            <div class="patterns-text">Patterns</div>
+        </div>
+        <ul>
+            <li><a>Статьи</a></li>
+            <li><a>Услуги</a></li>
+            <li><a>Обо мне</a></li>
+        </ul>
+    </header>
+    <div id="wrapper">
+        <div class="topic">
+            <div class="title">
+                <div class="article-name">Abstract Factory</div>
+                <div class="tags">
+                    <div class="tag">GoF</div>
+                    <div class="tag">Creational</div>
+                </div>
+                <div class="time">12.06.2016</div>
+            </div>
+            <div class="topic-content">
+
+
+                Абстрактная фабрика (англ. Abstract factory) — порождающий шаблон проектирования, предоставляет интерфейс для создания семейств взаимосвязанных или взаимозависимых объектов, не специфицируя их конкретных классов. Шаблон реализуется созданием абстрактного класса Factory, который представляет собой интерфейс для создания компонентов системы (например, для оконного интерфейса он может создавать окна и кнопки). Затем пишутся классы, реализующие этот интерфейс.<br><br>
+                <div>
+
+                </div>
+                Система не должна зависеть от того, как создаются, компонуются и представляются входящие в неё объекты.
+                Входящие в семейство взаимосвязанные объекты должны использоваться вместе и вам необходимо обеспечить выполнение этого ограничения.
+                Система должна конфигурироваться одним из семейств составляющих её объектов.
+                Требуется предоставить библиотеку объектов, раскрывая только их интерфейсы, но не реализацию.<br><br>
+
+                Абстрактная фабрика (англ. Abstract factory) — порождающий шаблон проектирования, предоставляет интерфейс для создания семейств взаимосвязанных или взаимозависимых объектов, не специфицируя их конкретных классов. Шаблон реализуется созданием абстрактного класса Factory, который представляет собой интерфейс для создания компонентов системы (например, для оконного интерфейса он может создавать окна и кнопки). Затем пишутся классы, реализующие этот интерфейс.<br><br>
+                <div>
+
+                </div>
+                Система не должна зависеть от того, как создаются, компонуются и представляются входящие в неё объекты.
+                Входящие в семейство взаимосвязанные объекты должны использоваться вместе и вам необходимо обеспечить выполнение этого ограничения.
+                Система должна конфигурироваться одним из семейств составляющих её объектов.
+                Требуется предоставить библиотеку объектов, раскрывая только их интерфейсы, но не реализацию.<br><br>
+
+                <div id="code-editor">
+                    <div class="code-menu">
+                        <ul>
+                            <li>
+                                AbstractFactory
+                            </li>
+                            <li  >
+                                ConcretFactory
+                            </li>
+                            <li class="active">
+                                AbstractProduct
+                            </li>
+                            <li>
+                                ConcretProduct
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="class">
+  <pre><div class="code"> <div class="code-key-word">public</div> <div class="code-key-word">class</div> <div class="code-class-field">AbstractFactoryExample</div> {
+
+    <div class="code-key-word">public</div> <div class="code-key-word">static</div> <div class="code-key-word">void</div> main(String[] <div class="code-class-field">args)</div> {
+
+        AbstractFactory factory1 = <div class="code-key-word">new</div> ConcreteFactory1()<div class="code-punctuation-sign">;</div>
+        Client client1 = <div class="code-key-word">new</div> Client(factory1)<div class="code-punctuation-sign">;</div>
+        client1.execute()<div class="code-punctuation-sign">;</div>
+
+        AbstractFactory factory2 = <div class="code-key-word">new</div> ConcreteFactory2()<div class="code-punctuation-sign">;</div>
+        Client client2 = <div class="code-key-word">new</div> Client(factory2)<div class="code-punctuation-sign">;</div>
+        client2.execute()<div class="code-punctuation-sign">;</div>
+    }
+}
+
+</div>
+</pre>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <h2 class="comment-section">Комментарии:</h2>
+        <div class="comment-area" tabindex="0" role="textbox" aria-multiline="true" contenteditable="PLAINTEXT-ONLY"
+             data-role="editable" style="overflow: auto; max-height: 350px;"><br></div>
+        <div class="name-section-text">Ваше имя:</div>
+        <input class="user-name">
+        <div class="send-btn">Отправить</div>
+        <div class="comments">
+            <div class="comment">
+                <div class="commenter-name">Александр</div>
+                <div class="time">12.06.16</div>
+                <div class="comment-left">
+                    Привет, Иван! Огромное спасибо.<br>
+                    Мне нравится!
+                </div>
+                <div class="comment">
+                    <div class="commenter-name">Иван</div>
+                    <div class="time">12.06.16</div>
+                    <div class="comment-left">
+                        Привет, Алекс! Спасибо и тебе :)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

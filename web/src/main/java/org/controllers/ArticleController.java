@@ -26,4 +26,9 @@ public class ArticleController {
     }
 
 
+    @RequestMapping("/concrete")
+    public ModelAndView get() {
+        return new ModelAndView("concrete");
+    }
+
 }
