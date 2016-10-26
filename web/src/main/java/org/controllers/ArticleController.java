@@ -3,6 +3,7 @@ package org.controllers;
 import org.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,15 +16,11 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @RequestMapping("/articles/new")
-    public ModelAndView getArticleCreationForm() {
-        return new ModelAndView("article-creation");
-    }
-
-
-    @RequestMapping("/concrete")
-    public ModelAndView get() {
-        return new ModelAndView("concrete");
+    @RequestMapping("/{articleName}")
+    public ModelAndView get(@PathVariable String articleName) {
+        return articleService.get(articleName).isPresent() ?
+                new ModelAndView("articles/" + articleName) :
+                new ModelAndView("concrete");
     }
 
 }

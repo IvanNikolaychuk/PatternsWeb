@@ -1,8 +1,9 @@
 angular.module("app")
     .controller('mainController', ['$scope', '$http', 'articleService', 'tagService',
         function ($scope, $http, articleService, tagService) {
-            $scope.articleService = articleService;
-            $scope.tagService = tagService;
+            var $mainCtrl = this;
+            $mainCtrl.articleService = articleService;
+            $mainCtrl.tagService = tagService;
 
 
             var desiredTag = getParameterByName('tag');
@@ -10,8 +11,8 @@ angular.module("app")
 
             $http.get(url)
                 .then(function (response) {
-                    $scope.articles = response.data;
-                    $scope.filterTag = desiredTag;
+                    $mainCtrl.articles = response.data;
+                    $mainCtrl.filterTag = desiredTag;
                 });
 
 

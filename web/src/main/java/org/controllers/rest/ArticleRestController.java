@@ -1,6 +1,5 @@
 package org.controllers.rest;
 
-import org.exceptions.NoSuchArticleException;
 import org.model.article.Article;
 import org.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,11 @@ public class ArticleRestController {
     @RequestMapping("/articles/{articleName}")
     public Article get(@PathVariable String articleName,
                        @RequestParam(value = "thin", defaultValue = "false")
-                               String thin) throws NoSuchArticleException {
+                               String thin)  {
+        // TODO: Make 404 page in case no such article
         return thin.equals("true") ?
-                        articleService.get(articleName) :
-                        articleService.load(articleName);
+                        articleService.get(articleName).get() :
+                        articleService.load(articleName).get();
     }
 
     @RequestMapping("/articles")

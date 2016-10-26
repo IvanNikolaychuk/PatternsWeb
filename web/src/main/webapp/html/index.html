@@ -18,11 +18,11 @@
     <script src="js/app-starter.js"></script>
     <script src="js/service/article-service.js"></script>
     <script src="js/service/tag-service.js"></script>
-    <script src="js/controller/main-controller.js"></script>
+    <script src="js/controller/main-page-controller.js"></script>
 
 </head>
 
-<body ng-app="app" ng-controller="mainController" ng-cloak>
+<body ng-app="app" ng-controller="mainController as $ctrl" ng-cloak>
 <div id="main-frame">
     <header>
         <div id="logo">
@@ -37,10 +37,10 @@
     </header>
     <div>
         <div class="tag-filter" ng-hide="filterTag == null">
-            Показаны только статьи, имеющие тэг <div class="tag small-tag"> {{ filterTag }}</div>
+            Показаны только статьи, имеющие тэг <div class="tag small-tag"> {{ $ctrl.filterTag }}</div>
         </div>
     </div>
-    <div class="topic-wrapper" ng-repeat="article in articles">
+    <div class="topic-wrapper" ng-repeat="article in $ctrl.articles">
         <div class="topic">
             <div class="title">
 
@@ -55,7 +55,7 @@
             </div>
             <div class="topic-content">{{ article.preview }}</div>
             <div class='read-all-btn'
-                 onclick="window.location='concrete.html'">
+                 ng-click="$ctrl.articleService.selected(article.name)">
 
                 <div class="read-fully">Читать</div>
             </div>

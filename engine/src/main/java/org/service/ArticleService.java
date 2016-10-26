@@ -39,14 +39,12 @@ public class ArticleService {
     }
 
 
-    private Article get(String articleName, boolean thin) throws NoSuchArticleException {
+    private Optional<Article> get(String articleName, boolean thin)  {
         List<Article> articles = repository.get(new ByArticleName(articleName), thin ? SELECT : JOIN);
 
-        if (articles.isEmpty()) {
-            throw new NoSuchArticleException(articleName);
-        }
-
-        return articles.get(0);
+        return articles.isEmpty() ?
+                Optional.empty() :
+                Optional.of(articles.get(0));
     }
 
     private List<Article> getAll(boolean thin) {
@@ -57,11 +55,11 @@ public class ArticleService {
         return getAll(true);
     }
 
-    public Article get(String articleName) throws NoSuchArticleException {
+    public Optional<Article> get(String articleName)  {
         return get(articleName, true);
     }
 
-    public Article load(String articleName) throws NoSuchArticleException {
+    public Optional<Article> load(String articleName)  {
         return get(articleName, false);
     }
 
