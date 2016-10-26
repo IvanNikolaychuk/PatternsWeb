@@ -7,73 +7,46 @@ import org.model.article.code.ClassSection;
 import org.model.article.code.SingleClass;
 import org.service.ArticleService;
 import org.service.decoration.CodeToHtmlConverter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+
+/**
+ * It's a separate service and not placed as part of {@link ArticleService} because it's intent is different.
+ * This one is designed for product owner usage and is not expected to be used by clients.
+ */
+@Service
 public class ArticleCreationService {
-    private static final String END = "end";
 
-    private CodeToHtmlConverter codeToHtmlConverter;
-    private ArticleService articleService;
+    private final CodeToHtmlConverter codeToHtmlConverter;
+    private final ArticleService articleService;
 
-    public ArticleCreationService() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/engine-module-context.xml");
-        codeToHtmlConverter = context.getBean(CodeToHtmlConverter.class);
-        articleService = context.getBean(ArticleService.class);
+    @Autowired
+    public ArticleCreationService(CodeToHtmlConverter codeToHtmlConverter, ArticleService articleService) {
+        this.codeToHtmlConverter = codeToHtmlConverter;
+        this.articleService = articleService;
     }
 
-    public static void main(String[] args) throws Exception {
-        final ArticleCreationService articleCreationService = new ArticleCreationService();
+    public void create(String articleName, String preview, Set<String> tagNames,
+                          String pathToDirWithClasses) throws Exception {
 
-        Scanner scanner = new Scanner(System.in);
+        ArticleCode code = new ArticleCode(
+                extractSingleClasses(pathToDirWithClasses), extractClassSections(pathToDirWithClasses));
 
-        System.out.println("Article name: ");
-        final String articleName = scanner.nextLine();
-
-        System.out.println("Article preview: ");
-        final String preview = scanner.nextLine();
-
-        System.out.println("Article tags: ");
-        final Set<Tag> tags = articleCreationService.readTags(scanner);
-
-        System.out.println("Path to base folder with single classes and class sections: ");
-        final String pathToBaseFolder = scanner.nextLine();
-        File baseFolder = new File(pathToBaseFolder);
-
-
-        Set<SingleClass> singleClasses = articleCreationService.extractSingleClasses(baseFolder);
-        Set<ClassSection> sections = articleCreationService.extractClassSections(baseFolder);
-
-        Article article = new Article(articleName, preview, new ArticleCode(singleClasses, sections), tags);
-
-        articleCreationService.create(article);
-
+        articleService.save(new Article(articleName, preview, code, toTags(tagNames)));
     }
 
-    private void create(Article article) {
-        articleService.save(article);
-    }
-
-    private Set<Tag> readTags(Scanner scanner) {
-        String nextTag = scanner.nextLine();
-
-        Set<Tag> tags = new HashSet<>();
-        while (!nextTag.equals(END)) {
-            tags.add(new Tag(nextTag));
-            nextTag = scanner.nextLine();
-        }
-
-        return tags;
-    }
-
-    private Set<ClassSection> extractClassSections(File baseFolder) throws Exception {
-        File folderWithClassSections = new File(baseFolder.getAbsolutePath() + "\\sections");
+    private Set<ClassSection> extractClassSections(String pathToFolderWithClasses) throws Exception {
+        File folderWithClassSections = new File(pathToFolderWithClasses + "\\sections");
 
         Set<ClassSection> classSections = new HashSet<>();
 
@@ -94,8 +67,8 @@ public class ArticleCreationService {
         return classSections;
     }
 
-    private Set<SingleClass> extractSingleClasses(File baseFolder) throws Exception {
-        File folderWithSingleClasses = new File(baseFolder.getAbsolutePath() + "\\single");
+    private Set<SingleClass> extractSingleClasses(String pathToFolderWithClasses) throws Exception {
+        File folderWithSingleClasses = new File(pathToFolderWithClasses + "\\single");
 
         Set<SingleClass> classes = new HashSet<>();
         for (File singleClassFile : folderWithSingleClasses.listFiles()) {
@@ -111,5 +84,13 @@ public class ArticleCreationService {
             inputStream.read(content);
             return codeToHtmlConverter.convert(singleClassFile.getName(), new String(content));
         }
+    }
+
+    private Set<Tag> toTags(Set<String> tagNames) {
+        Set<Tag> tags = new HashSet<>(tagNames.size());
+
+        tags.addAll(tagNames.stream().map(Tag::new).collect(Collectors.toList()));
+
+        return tags;
     }
 }
