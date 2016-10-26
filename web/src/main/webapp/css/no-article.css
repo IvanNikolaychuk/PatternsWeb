@@ -1,0 +1,40 @@
+.not-found-block{
+    height: 600px;
+    color:#696969;
+    text-align: center;
+    font-size: 1.7em;
+    font-family: 'EB Garamond', serif;
+}
+
+.small-text {
+    vertical-align: 13px;
+    font-size: 0.8em;
+}
+
+#sad-face {
+    margin: 3% auto;
+    background-image: url('../img/sad.png');
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+
+.articles{
+    margin-top: 2%;
+}
+
+.article-name{
+    width:45%;
+    font-size: 0.9em;
+    display: inline-block;
+}
+
+.article-name:hover {
+    cursor: pointer;
+    color:#86B1E3;
+}
+
+.link-to-index{
+    cursor: pointer;
+    color: #8B9FB5;
+}

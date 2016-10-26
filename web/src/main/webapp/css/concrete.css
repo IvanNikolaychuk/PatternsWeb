@@ -1,10 +1,3 @@
-body {
-    background: #f1f2f4;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 0.9em;
-}
-
-
 .tag-filter {
     margin-top:2%;
     padding-bottom: 1%;
@@ -16,10 +9,6 @@ body {
     font-family: 'EB Garamond', serif;
 }
 
-#main-frame {
-    margin: -1% 10% 0;
-    background: #fff;
-}
 
 .article-name {
     margin-bottom: 1.5%;

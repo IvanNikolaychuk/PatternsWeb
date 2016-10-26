@@ -7,8 +7,13 @@ angular.module("app").service('articleService', function () {
         window.location = window.location.origin + "/" + articleName;
     }
 
+    function toMainPage() {
+        window.location = window.location.origin;
+    }
+
     return {
         format : format,
-        selected : selected
+        selected : selected,
+        toMainPage : toMainPage
     };
 });

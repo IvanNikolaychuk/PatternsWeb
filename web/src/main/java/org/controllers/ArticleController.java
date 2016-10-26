@@ -20,7 +20,7 @@ public class ArticleController {
     public ModelAndView get(@PathVariable String articleName) {
         return articleService.get(articleName).isPresent() ?
                 new ModelAndView("articles/" + articleName) :
-                new ModelAndView("concrete");
+                new ModelAndView("no-article");
     }
 
 }

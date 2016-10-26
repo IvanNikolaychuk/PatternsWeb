@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Your Website</title>
+    <link href="css/header.css" rel="stylesheet"/>
+    <link href="css/commons.css" rel="stylesheet"/>
+    <link href="css/no-article.css" rel="stylesheet"/>
+
+
+    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="js/header.js"></script>
+
+    <script src="js/app-starter.js"></script>
+    <script src="js/service/article-service.js"></script>
+    <script src="js/service/tag-service.js"></script>
+    <script src="js/controller/main-page-controller.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Merriweather:400|EB+Garamond" rel="stylesheet">
+</head>
+
+<body>
+<div id="main-frame" ng-app="app" ng-controller="mainController as $ctrl">
+    <header>
+        <div id="logo">
+            <div class="design-text">Design</div>
+            <div class="patterns-text">Patterns</div>
+        </div>
+        <ul>
+            <li><a class="nav nav-articles">Статьи</a></li>
+            <li><a class="nav nav-service">Услуги</a></li>
+            <li><a class="nav nav-about-me">Обо мне</a></li>
+        </ul>
+    </header>
+    <div class="not-found-block">
+        <div id="sad-face"></div>
+
+        Нет такой статьи.<br>
+        Вот список всех статей с линками, может вам поможет :)<br>
+        <span class="small-text">(если не помогло,
+            <a class="link-to-index" ng-click="$ctrl.articleService.toMainPage()">
+                возвращайтесь на главную</a>)</span><br>
+
+        <div class="articles">
+            <div class="article-name"
+                 ng-repeat="article in $ctrl.articles"
+                 ng-click="$ctrl.articleService.selected(article.name)">{{ article.name }}
+            </div>
+            <div class="article-name" ng-hide="$ctrl.articles.length % 2 == 0"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,3 +1,14 @@
+body {
+    background: #f1f2f4;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9em;
+}
+
+#main-frame {
+    margin: -1% 10% 0;
+    background: #fff;
+}
+
 .tag {
     font-family: 'EB Garamond', serif;
     cursor: pointer;

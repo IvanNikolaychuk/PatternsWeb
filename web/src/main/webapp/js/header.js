@@ -3,6 +3,10 @@ $(function () {
         window.location.href = window.location.origin;
     });
 
+    $(".nav-articles").click(function () {
+        window.location.href = window.location.origin;
+    });
+
     var $initialActiveNav = $(".active-nav");
 
     $(".nav").hover(function () {
