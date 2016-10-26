@@ -1,14 +1,14 @@
 package org.repo;
 
-import org.hibernate.*;
+import org.hibernate.FetchMode;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.model.article.Article;
 import org.repo.specification.ArticleSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-
-import static org.hibernate.FetchMode.JOIN;
-import static org.hibernate.criterion.CriteriaSpecification.DISTINCT_ROOT_ENTITY;
 
 public class ArticleRepository {
     private final SessionFactory sessionFactory;
@@ -28,12 +28,20 @@ public class ArticleRepository {
 
     @SuppressWarnings("all")
     public List<Article> get(ArticleSpecification specification, FetchMode fetchMode) {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
 
             return specification
                     .fetchMode(fetchMode)
                     .toCriteria(session)
                     .list();
+        }
+    }
+
+    public void delete(Article article) {
+        try (Session session = sessionFactory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(article);
+            transaction.commit();
         }
     }
 }

@@ -1,4 +1,4 @@
-package org.repo;
+package overrides;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Component
-public class SessionFactoryBuilder {
+public class TestSessionFactoryBuilder {
     private static SessionFactory sessionFactory;
 
 
     @PostConstruct
     public void setUp() {
-        sessionFactory = new Configuration().configure("hibernate/hibernate-cfg.xml").buildSessionFactory();
+        sessionFactory = new Configuration().configure("h2-hibernate-cfg.xml").buildSessionFactory();
     }
 
     public SessionFactory newInstance() {

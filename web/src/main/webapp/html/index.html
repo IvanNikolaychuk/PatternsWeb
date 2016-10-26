@@ -36,7 +36,7 @@
         </ul>
     </header>
     <div>
-        <div class="tag-filter" ng-hide="filterTag == null">
+        <div class="tag-filter" ng-hide="$ctrl.filterTag == null">
             Показаны только статьи, имеющие тэг <div class="tag small-tag"> {{ $ctrl.filterTag }}</div>
         </div>
     </div>
@@ -46,7 +46,7 @@
 
                 <div class="article-name">{{ article.name }}</div>
                 <div class="tags">
-                        <div class="tag" ng-click="tagService.clicked(tag.name)" ng-repeat="tag in article.tags">
+                        <div class="tag" ng-click="$ctrl.tagService.clicked(tag.name)" ng-repeat="tag in article.tags">
                             {{ tag.name }}
                         </div>
                 </div>

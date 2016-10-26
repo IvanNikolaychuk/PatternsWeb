@@ -24,13 +24,12 @@
 }
 
 .article-name{
-    width:45%;
+    cursor: pointer;
     font-size: 0.9em;
-    display: inline-block;
+    margin-bottom: 1%;
 }
 
 .article-name:hover {
-    cursor: pointer;
     color:#86B1E3;
 }
 

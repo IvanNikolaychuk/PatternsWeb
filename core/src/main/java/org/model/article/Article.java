@@ -45,4 +45,8 @@ public class Article {
     public void addComment(Comment comment) {
         comments.add(comment);
     }
+
+    public String getName() {
+        return name;
+    }
 }
