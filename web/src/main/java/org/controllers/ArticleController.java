@@ -15,11 +15,6 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @RequestMapping("/article/save")
-    public void save() {
-        articleService.save();
-    }
-
     @RequestMapping("/articles/new")
     public ModelAndView getArticleCreationForm() {
         return new ModelAndView("article-creation");
