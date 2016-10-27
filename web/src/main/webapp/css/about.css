@@ -1,0 +1,43 @@
+.wrapper{
+    width:70%;
+    padding-left: 15%;
+    padding-right: 15%;
+    border-bottom: 3px solid #E3E3E3;
+    color:#575757;
+    margin: 2% auto auto;
+    height: 1125px;
+    text-align: center;
+    font-size: 1.35em;
+    font-family: 'EB Garamond', serif;
+}
+
+
+.my-photo{
+    width: 180px;
+    height: 180px;
+    margin: auto auto 3%;
+    background: url('../img/me.png') -6px;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.contact-data {
+    margin-top: 5%;
+}
+
+.icon{
+    margin-left: 1%;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.github-icon{
+    background-image: url('../img/github-logo.png')
+}
+
+.vk-icon{
+    background-image: url('../img/vk.png')
+}
