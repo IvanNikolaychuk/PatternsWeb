@@ -5,30 +5,34 @@
     border-bottom: 3px solid #E3E3E3;
     color:#575757;
     margin: 2% auto auto;
-    height: 1125px;
+    height: auto;
     text-align: center;
     font-size: 1.35em;
     font-family: 'EB Garamond', serif;
 }
 
+.hello-word{
+    border-bottom: 1px solid #E8E8E8;
+    margin-bottom: 3%;
+}
 
 .my-photo{
-    width: 180px;
-    height: 180px;
-    margin: auto auto 3%;
+    width: 150px;
+    height: 150px;
+    margin: 3% auto 4%;
     background: url('../img/me.png') -6px;
     background-size: cover;
     border-radius: 50%;
 }
 
 .contact-data {
-    margin-top: 5%;
+    margin: 5% 0;
 }
 
 .icon{
-    margin-left: 1%;
-    width: 50px;
-    height: 50px;
+    margin-left: 2%;
+    width: 45px;
+    height: 45px;
     display: inline-block;
     background-size: cover;
     cursor: pointer;
