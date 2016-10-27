@@ -7,15 +7,18 @@
     <link href="css/concrete.css" rel="stylesheet"/>
     <link href="css/commons.css" rel="stylesheet"/>
     <link href="css/code.css" rel="stylesheet"/>
+    <link href="css/tabs.css" rel="stylesheet"/>
 
-    <script src="js/vendor/angular.min.js"></script>
+    <script src="js/vendor/angular.min.js" async></script>
     <script src="js/vendor/angular-sanitize.js"></script>
     <script src="js/vendor/jquery-3.1.1.min.js"></script>
+    <script src="js/vendor/jquery-ui.min.js"></script>
     <script src="js/header.js"></script>
 
     <script src="js/article-app-starter.js"></script>
     <script src="js/service/article-service.js"></script>
     <script src="js/controller/concrete-article-controller.js"></script>
+    <script src="js/article/article.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400|Merriweather:400|EB+Garamond" rel="stylesheet">
 </head>
@@ -55,27 +58,12 @@
                 Система должна конфигурироваться одним из семейств составляющих её объектов.
                 Требуется предоставить библиотеку объектов, раскрывая только их интерфейсы, но не реализацию.<br><br>
 
-                <div id="code-editor">
-                    <div class="code-menu">
-                        <ul>
-                            <li>
-                                AbstractFactory
-                            </li>
-                            <li  >
-                                ConcretFactory
-                            </li>
-                            <li class="active">
-                                AbstractProduct
-                            </li>
-                            <li>
-                                ConcretProduct
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="class">
-  <pre><div class="code" ng-bind-html="$ctrl.code.classes[0].code">
-
-</div></pre>
+                <div id="tabs">
+                    <ul>
+                        <li ng-repeat="class in $ctrl.code.sections[0].singleClasses"><a href="{{'#' + class.name}}">{{class.name}}</a></li>
+                    </ul>
+                    <div ng-repeat="class in $ctrl.code.sections[0].singleClasses" id="{{class.name}}">
+                        <pre><p ng-bind-html="class.code"></p></pre>
                     </div>
                 </div>
 
