@@ -1,13 +1,6 @@
 package org.service;
 
-import org.exceptions.NoSuchArticleException;
-import org.hibernate.cfg.Configuration;
-import org.model.Comment;
 import org.model.article.Article;
-import org.model.article.Tag;
-import org.model.article.code.ArticleCode;
-import org.model.article.code.ClassSection;
-import org.model.article.code.SingleClass;
 import org.repo.ArticleRepository;
 import org.repo.specification.ByArticleName;
 import org.repo.specification.ByTag;
@@ -15,7 +8,8 @@ import org.repo.specification.EachArticle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
 
 import static org.hibernate.FetchMode.JOIN;
 import static org.hibernate.FetchMode.SELECT;
@@ -47,12 +41,8 @@ public class ArticleService {
                 Optional.of(articles.get(0));
     }
 
-    private List<Article> getAll(boolean thin) {
-        return repository.get( new EachArticle(), thin ? SELECT : JOIN);
-    }
-
     public List<Article> getAll() {
-        return getAll(true);
+        return repository.get( new EachArticle(), SELECT);
     }
 
     public Optional<Article> get(String articleName)  {

@@ -8,14 +8,11 @@ import org.model.article.code.SingleClass;
 import org.service.ArticleService;
 import org.service.decoration.CodeToHtmlConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -82,7 +79,9 @@ public class ArticleCreationService {
         try (FileInputStream inputStream = new FileInputStream(singleClassFile)) {
             byte[] content = new byte[(int) singleClassFile.length()];
             inputStream.read(content);
-            return codeToHtmlConverter.convert(singleClassFile.getName(), new String(content));
+
+            final String className = singleClassFile.getName().substring(0, singleClassFile.getName().indexOf("."));
+            return codeToHtmlConverter.convert(className, new String(content));
         }
     }
 
