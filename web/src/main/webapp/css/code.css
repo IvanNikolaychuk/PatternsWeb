@@ -3,11 +3,10 @@
     background-color: #f8f8f8;
 }
 
-
 #code-editor ul{
     list-style-type: none;
     background: #F0F1F2;
-    padding-left: 0%;
+    padding-left: 0;
     border-bottom: 2px solid #fff;
     margin: 0;
 }
@@ -23,9 +22,7 @@
 }
 
 #code-editor li{
-    padding: 1%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
+    padding: 1% 2.5%;
     display: inline-block;
     cursor: pointer;
 }
@@ -34,31 +31,43 @@
     padding-top:1%;
 }
 
+
 .class{
     height: 100%;
     overflow-y:scroll;
     background-color: #f8f8f8;
 }
 
-
-.code-key-word{
+.code-element{
     display: inline-block;
+}
+
+.key-word{
     color: #000080;
     font-weight: bold;
 }
 
-.code-class-field{
-    display: inline-block;
+.class-field{
     color:#660E7A;
     font-weight: bold;
 }
 
-.code-comment{
-    display: inline-block;
+.comment{
     color:#808080;
 }
 
-.code-punctuation-sign{
-    display: inline-block;
+.string {
+    color:#008000;
+}
+
+.digit{
+    color:#000fff;
+}
+
+.annotation {
+    color: #808000;
+}
+
+.punctuation-sign{
     font-size: 1.2em;
 }

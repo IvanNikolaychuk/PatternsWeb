@@ -8,5 +8,6 @@ angular.module("app")
             $http.get("rest/articles/" + $articleName)
                 .then(function (response) {
                     $mainCtrl.article = response.data;
+                    $mainCtrl.code = response.data.articleCode;
                 });
         }]);

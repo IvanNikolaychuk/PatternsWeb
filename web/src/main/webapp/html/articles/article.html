@@ -12,7 +12,7 @@
     <script src="js/vendor/jquery-3.1.1.min.js"></script>
     <script src="js/header.js"></script>
 
-    <script src="js/app-starter.js"></script>
+    <script src="js/article-app-starter.js"></script>
     <script src="js/service/article-service.js"></script>
     <script src="js/controller/concrete-article-controller.js"></script>
 
@@ -72,22 +72,9 @@
                         </ul>
                     </div>
                     <div class="class">
-  <pre><div class="code"> <div class="code-key-word">public</div> <div class="code-key-word">class</div> <div class="code-class-field">AbstractFactoryExample</div> {
+  <pre><div class="code" ng-bind-html="$ctrl.code.classes[0].code">
 
-    <div class="code-key-word">public</div> <div class="code-key-word">static</div> <div class="code-key-word">void</div> main(String[] <div class="code-class-field">args)</div> {
-
-        AbstractFactory factory1 = <div class="code-key-word">new</div> ConcreteFactory1()<div class="code-punctuation-sign">;</div>
-        Client client1 = <div class="code-key-word">new</div> Client(factory1)<div class="code-punctuation-sign">;</div>
-        client1.execute()<div class="code-punctuation-sign">;</div>
-
-        AbstractFactory factory2 = <div class="code-key-word">new</div> ConcreteFactory2()<div class="code-punctuation-sign">;</div>
-        Client client2 = <div class="code-key-word">new</div> Client(factory2)<div class="code-punctuation-sign">;</div>
-        client2.execute()<div class="code-punctuation-sign">;</div>
-    }
-}
-
-</div>
-</pre>
+</div></pre>
                     </div>
                 </div>
 
