@@ -1,5 +1,9 @@
 angular.module("app").service('articleService', function () {
     function format(date) {
+        if (!date) {
+            return '';
+        }
+
         return date.dayOfMonth + '.' + date.monthValue + '.' + date.year;
     }
 

@@ -3,7 +3,8 @@ angular.module("app")
         function ($scope, $http, articleService) {
             var $mainCtrl = this;
             $mainCtrl.articleService = articleService;
-            var $articleName = window.location.pathname.replace(new RegExp('/', 'g'), "");
+            var $locationPath = window.location.pathname;
+            var $articleName = $locationPath.substring($locationPath.lastIndexOf('/') + 1, $locationPath.length);
 
             $http.get("rest/articles/" + $articleName)
                 .then(function (response) {
