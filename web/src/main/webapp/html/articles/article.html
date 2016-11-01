@@ -17,6 +17,7 @@
 
     <script src="js/article-app-starter.js"></script>
     <script src="js/service/article-service.js"></script>
+    <script src="js/service/code-loader.js"></script>
     <script src="js/controller/concrete-article-controller.js"></script>
     <script src="js/article/article.js"></script>
 
@@ -58,13 +59,14 @@
                 Система должна конфигурироваться одним из семейств составляющих её объектов.
                 Требуется предоставить библиотеку объектов, раскрывая только их интерфейсы, но не реализацию.<br><br>
 
-                <div id="tabs">
-                    <ul>
-                        <li ng-repeat="class in $ctrl.code.sections[0].singleClasses"><a href="{{'#' + class.name}}">{{class.name}}</a></li>
-                    </ul>
-                    <div ng-repeat="class in $ctrl.code.sections[0].singleClasses" id="{{class.name}}">
-                        <pre><p ng-bind-html="class.code"></p></pre>
-                    </div>
+                <div class="tabs tab1">
+                    <ul class="header"></ul>
+                    <div class="content"></div>
+                </div>
+
+                <div class="tabs tab2">
+                    <ul class="header"></ul>
+                    <div class="content"></div>
                 </div>
 
             </div>
