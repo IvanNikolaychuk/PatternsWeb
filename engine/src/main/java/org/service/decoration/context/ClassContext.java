@@ -25,7 +25,7 @@ public class ClassContext<T> {
         return currIndex + 1 < elements.length;
     }
 
-    public int numberOfElements() {
+    public int size() {
         return elements.length;
     }
 

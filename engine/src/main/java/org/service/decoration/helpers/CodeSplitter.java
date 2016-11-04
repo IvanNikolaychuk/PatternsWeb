@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class CodeSplitter {
 
     // Split-chars are: "=", ".", ";", "(", ")", "<", ">", "," and any number of spaces.
-    private static final Pattern pattern = Pattern.compile("=|\\.|;|,|\\s+|\\n|\\(|\\)|<|>");
+    private static final Pattern pattern = Pattern.compile("=|\\.|;|,|\\s+|\\n|\\(|\\)|<|>|\\{|\\}");
 
 
     public String[] split(String code) {

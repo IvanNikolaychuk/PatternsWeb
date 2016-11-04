@@ -22,7 +22,7 @@ public class ClassContextConverter {
 
     public ClassContext<CodeElement> convert(ClassContext<String> classContext) {
         StateManager stateManager = stateManagerFactory.createStateManager();
-        CodeElement[] elements = new CodeElement[classContext.numberOfElements()];
+        CodeElement[] elements = new CodeElement[classContext.size()];
 
         int index = 0;
         while (classContext.hasNext()) {
