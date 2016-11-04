@@ -1,36 +1,45 @@
 package org.service.decoration.inspection;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.service.decoration.elements.CodeElement;
 import org.service.decoration.elements.JavaString;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.service.decoration.elements.CodeElement.NO_ELEMENT;
 import static org.service.decoration.helpers.ClassContextConverter.State.IN_CLASS;
 import static org.service.decoration.helpers.ClassContextConverter.State.IN_COMMENT;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class JavaStringInspectionTest {
-    @Autowired
     private JavaStringInspection inspection;
+
+    @Before
+    public void setUp() {
+        inspection = new JavaStringInspection();
+    }
 
     @Test
     public void nextElementIsJavaStringWhenWeAreInClassState() {
-        CodeElement element = inspection.inspect("\"someString\"",  IN_CLASS, InspectionHelper.classContext("comment"));
-
+        CodeElement element = inspection.inspect("\"",  IN_CLASS, InspectionHelper.classContext(""));
         assertEquals(element.getClass(), JavaString.class);
-        assertEquals(element.getValue(), "\"someString\"");
+        assertEquals(element.getValue(), "\"");
+
+        element = inspection.inspect("string",  IN_CLASS, InspectionHelper.classContext(""));
+        assertEquals(element.getClass(), JavaString.class);
+        assertEquals(element.getValue(), "string");
+
+        element = inspection.inspect("\"",  IN_CLASS, InspectionHelper.classContext(""));
+        assertEquals(element.getClass(), JavaString.class);
+        assertEquals(element.getValue(), "\"");
+
+        element = inspection.inspect("test",  IN_CLASS, InspectionHelper.classContext(""));
+        assertEquals(element, NO_ELEMENT);
     }
 
     @Test
     public void nextElementIsNotJavaStringWhenWeAreInCommentState() {
         CodeElement element = inspection
-                .inspect("\"something\"", IN_COMMENT, InspectionHelper.classContext("\"something\""));
+                .inspect("\"", IN_COMMENT, InspectionHelper.classContext(""));
         assertEquals(element, NO_ELEMENT);
     }
 }
