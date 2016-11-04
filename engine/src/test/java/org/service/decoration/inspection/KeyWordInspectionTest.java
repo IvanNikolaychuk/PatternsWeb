@@ -1,21 +1,20 @@
 package org.service.decoration.inspection;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.service.decoration.elements.CodeElement;
 import org.service.decoration.elements.KeyWord;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.service.decoration.helpers.ClassContextConverter.State.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:spring/engine-module-context.xml")
 public class KeyWordInspectionTest {
-    @Autowired
     private KeyWordInspector inspection;
+
+    @Before
+    public void setUp() {
+        inspection = new KeyWordInspector();
+    }
 
     @Test
     public void keyWordIsReturnedWhenKeyWordExists() {
